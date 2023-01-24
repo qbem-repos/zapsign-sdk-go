@@ -11,7 +11,7 @@ import (
 	"github.com/qbem-repos/zapsign-sdk-go/zapsign/response"
 )
 
-const baseUrl string = "https://api.zapsign.com.br/api/v1/"
+const BASEURL string = "https://api.zapsign.com.br/api/v1/"
 
 // ZapsignAPIClient api interface
 type ZapsignAPI interface {

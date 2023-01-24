@@ -16,23 +16,6 @@ type Model struct {
 	Data                  []Datum `json:"data"` // Data is key value for include text dinamiclly into document
 }
 
-// NewDocs create a new instance from Docs
-func NewDocs(name, base64Pdf, brandPrimaryColor string) (*Docs, error) {
-
-	if name == "" {
-		return nil, errors.New("name is not should be null")
-	}
-	if base64Pdf == "" {
-		return nil, errors.New("base64pdf is not should be null")
-	}
-
-	return &Docs{
-		Name:              name,
-		Base64Pdf:         base64Pdf,
-		BrandPrimaryColor: brandPrimaryColor,
-	}, nil
-}
-
 // Docs is zapsign document request body
 type Docs struct {
 	Name              string   `json:"name"`                // Name is name to docs
@@ -44,10 +27,12 @@ type Docs struct {
 
 func (d *Docs) AddOnserver(o string) *Docs {
 	d.Observers = append(d.Observers, o)
+	return &Docs{}
 }
 
 func (d *Docs) AddSigners(s Signer) *Docs {
 	d.Signers = append(d.Signers, s)
+	return &Docs{}
 }
 
 // NewDocs create a new instance from Docs
